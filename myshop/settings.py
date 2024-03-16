@@ -123,8 +123,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CART_SESSION_ID = 'cart'
 
 
-Live_Callback_URL='https://paystack.dev/paystack/callback'
-PAYSTACK_INITIALIZE_PAYMENT_URL='https://api.paystack.co/transaction/initialize'
 
-PAYSTACK_SECRET_KEY = 'sk_live_1855cdb728defd5953075705cddd2abdce82202f'
-PAYSTACK_PUBLIC_KEY = 'pk_live_b1a9dfb7ccca1b8c108427d5505dc5f9b2eb1dbd'
