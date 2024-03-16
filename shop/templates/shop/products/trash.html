@@ -1,0 +1,21 @@
+<div class="row">
+    {% for prod in products %}
+    <div class="col-auto">
+        <a href="#" style="text-decoration: none; color: black;">
+     <img src="{{ prod.image.url }}" class="img-thumbnail mt-5" height="300px" width="300px" alt="image">
+     <p>
+     {{ prod.name }}<span class="badge pill-badge bg-danger p-1 m-2"> ₦ {{ prod.price }} </span>
+    </p>
+    </a>
+    </div>
+     {% endfor %}
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    

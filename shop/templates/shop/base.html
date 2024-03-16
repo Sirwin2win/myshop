@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-commerce</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'shop/fontawesome/css/all.min.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{%static 'shop/bootstrap/css/bootstrap.min.css' %}" >
+ <style>
+    a {
+        text-decoration: none;
+    }
+ </style>
+</head>
+<body style="background-color: aqua;">
+    <div id="header" style="margin-left: 500px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+       
+        <a href="{% url 'shop:product_list' %}" class="logo">Home</a>
+        <a href="{% url 'shop:about' %}" class="logo" style="margin: 50px;">About</a>
+        <a href="{% url 'shop:contact' %}" class="logo" style="margin: 50px;">Contact</a>
+        <a href="{% url 'shop:portal' %}" class="logo" style="margin: 50px;">Portal</a>
+      
+            {% with total_items=cart|length %}
+            {% if total_items > 0 %}
+            
+            
+            <a href="{% url "cart:cart_detail" %}" >
+                 
+                <i class="fa fa-shopping-cart" style="color: gold"> {{ total_items }} </i>
+           
+            
+           
+            </a>
+            {% else %}
+            <i class="fa fa-shopping-cart" style="color: gold"></i>
+            {% endif %}
+            {% endwith %}
+        </div>
+       
+         
+    <div class="container" style="background-color: aqua;">
+{% block content %}
+
+
+{% endblock %}
+</div>
+</body>
+</html>

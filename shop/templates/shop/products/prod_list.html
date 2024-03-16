@@ -1,0 +1,95 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+
+<!-- {% block title %}
+ {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %} -->
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+   <div class="col-sm-4"> 
+
+    
+    <div id="bdSidebar" 
+         class="d-flex flex-column  
+                flex-shrink-0  
+                p-3 text-white offcanvas-md offcanvas-start"> 
+        <a href="#" 
+           class="navbar-brand"> Products
+        </a><hr> 
+        <ul class="mynav nav nav-pills flex-column mb-auto"> 
+            <li class="nav-item mb-1"> 
+                <a href="{% url 'shop:create_category' %}" style="text-decoration: none;"> 
+                    <i class="fa-regular fa-user"></i> 
+                    Create Category
+                </a> 
+            </li> 
+
+            <li class="nav-item mb-1"> 
+                <a href="{% url 'shop:category_list' %}" style="text-decoration: none;"> 
+                    <i class="fa-regular fa-bookmark"></i> 
+                    Manage Category
+                    <span class="notification-badge"></span> 
+                </a> 
+            </li> 
+            <li class="nav-item mb-1"> 
+                <a href="{% url 'shop:create_product' %}" style="text-decoration: none;"> 
+                    <i class="fa-regular fa-newspaper"></i> 
+                    Upload Products
+                </a> 
+            </li> 
+            <li class="nav-item mb-1"> 
+               
+                <a href="{% url 'shop:prod_list' %}" style="text-decoration: none;"> 
+                    <i class="fa-solid fa-archway"></i> 
+                   Manage Products
+                </a> 
+            </li> 
+
+            </ul>
+    </div></div>
+    <div class="col-sm-8">
+
+
+
+        <table class="table table-bordered table-hover" style="margin-top: 50px;">
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th> Name</th>
+                <th> Image</th>
+                <th> Description</th>
+                <th> Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+        {% for prod in products %}
+        <tr>
+        <td> {{ prod.id }} </td>
+        <td> {{ prod.name }} </td>
+        <td><img src="{{ MEDIA_URL }}{{ prod.image.url }}" class="img-thumbnail" height="200px" width="200px" alt="image"> </td>
+        <td> {{ prod.description }} </td>
+        <td> {{ prod.price }} </td>
+        <td> <a href="{% url 'shop:update_product' prod.id %}"><i class="fa fa-pencil" style="color:orange;"></i></a> |
+            <a href="{% url 'shop:delete_product' prod.id %}"><i class="fa fa-trash" style="color: red;"></i></a> </td>
+        </tr>
+        {% endfor %}
+</tbody>
+</table>
+        
+       
+
+
+            </div>
+        </div>
+        </div>
+
+
+</div>
+
+</div>
+{% endblock %}

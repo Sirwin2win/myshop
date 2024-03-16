@@ -1,0 +1,55 @@
+{% extends "shop/base.html" %}
+
+
+{% block content%}
+<div class="container mt-3">
+    <h1>Order No. #{{ order.id }}</h1>
+    <ul class="object-tools">
+        <li>
+            <a href="#" onclick="window.print();">
+                Print payment
+            </a>
+        </li>
+    </ul>
+    <table class="table">
+        <tr>
+            <th>Created</th>
+            <td>{{ order.created }}</td>
+        </tr>
+        <tr>
+            <th>Customer</th>
+            <td>{{ order.first_name }} {{ order.last_name }}</td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>{{ order.email }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>
+                {{ order.city }}
+            </td>
+        </tr>
+        <tr>
+            <th>Total amount</th>
+            <td>₦ {{ cart.get_total_price }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>{% if order.paid %}Paid{% else %}Pending payment{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Paystack payment</th>
+            <td>
+                {% if payment.paystack_ref %}
+                    ##################
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    <form action="{% url "payment:payment_process" %}" method="post">
+        <input type="submit" class="btn btn-primary mt-2" value="Pay now">
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

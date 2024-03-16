@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+<div class="row mt-5">
+    <div class="col-4">
+        
+        <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>Category Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+        {% for cat in category %}
+        <tr>
+        <td> {{ cat.id }} </td>
+        <td> {{ cat.name }} </td>
+        <td> <a href="{% url 'shop:update_category' cat.id %}"><i class="fa fa-pencil" style="color:orange;"></i></a> |
+            <a href="{% url 'shop:delete_category' cat.id %}"><i class="fa fa-trash" style="color: red;"></i></a> </td>
+        </tr>
+        {% endfor %}
+</tbody>
+</table>
+       
+       
+       
+
+    </div>
+
+{% endblock %}

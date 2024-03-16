@@ -1,0 +1,29 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+ {{ product.name }}
+{% endblock %}
+{% block content %}
+ <div class="product-detail">
+    <div class="row mt-5">
+        <div class="col-4">
+    <img src="{{ products.image.url }}" class="img-thumbnail" height="400px" width="400px" alt="image">
+</div>
+<div class="col-4">
+ <h1>{{ product.name }}</h1>
+ <h2>
+ <a href="{{ product.category.get_absolute_url }}">
+ {{ products.category }}
+ </a>
+ </h2>
+ <p class="price">${{ products.price }}</p>
+ <form action="{% url "cart:cart_add" products.id %}" method="post">
+    {{ cart_product_form }}
+    {% csrf_token %}
+    <input type="submit" value="Add to cart">
+   </form>
+ {{ products.description|linebreaks }}
+</div>
+ </div>
+</div>
+{% endblock %}
